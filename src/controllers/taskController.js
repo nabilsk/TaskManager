@@ -2,11 +2,8 @@ const TaskDb = require("../models/TaskModel");
 
 const getAlltasks = async (req, res) => {
   try {
-    const allTasks = await TaskDb.find({});
-    res.status(200).json({
-      msg: "getting all the data",
-      data: allTasks,
-    });
+    const tasks = await TaskDb.find({});
+    res.status(200).json({ tasks });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
@@ -21,8 +18,7 @@ const createTasks = async (req, res) => {
     });
 
     res.status(201).json({
-      msg: "Succefully creted",
-      data: createtask,
+      createtask,
     });
   } catch (error) {
     res.status(500).json({ msg: error });
